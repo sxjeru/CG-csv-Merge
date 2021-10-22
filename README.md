@@ -1,6 +1,7 @@
 # CG csv Merge 
 Merge some Galgame CG images, which often include a large original picture and some small pictures with only difference parts.
 
+此程序可用于批量合并某些带有 csv 文件的 Galgame CG 差分图，使其仅包含差异部分的图片与原图合并成一张新图片并存储。
 # 用法
 
 # 编译
