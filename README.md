@@ -3,7 +3,7 @@ Merge some Galgame CG images, which often include a large original picture and s
 
 此程序可用于批量合并某些带有 csv 文件的 Galgame CG 差分图，使其仅包含差异部分的图片与原图合并成一张新图片并存储。
 # 适用范围
-由于本程序是以合并『俺の恋天使がポンコツすぎてコワ～い。』的CG为目的开发，因此适用范围有限，需满足以下条件：
+由于本程序是以合并『俺の恋天使がポンコツすぎてコワ～い。』的CG为目的开发的，因此适用范围有限，通常需满足以下条件：
 
 - Windows 7+ x64；
 - Microsoft Visual C++ 2015-2019 Redistributable 运行库（[点此下载](https://aka.ms/vs/16/release/vc_redist.x64.exe)）；
