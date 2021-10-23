@@ -6,14 +6,19 @@ Merge some Galgame CG images, which often include a large original picture and s
 由于本程序是以合并『俺の恋天使がポンコツすぎてコワ～い。』的CG为目的开发，因此适用范围有限，需满足以下条件：
 
 - 源文件包含一张原图与至少一张差分图（图片均为jpg格式），还有一个csv文件。
-- 所有文件名均以“l”结尾，且均为小写字母。（例如`ea01_01l`）<br>
+- 所有文件名均以字母“l”结尾，且均为小写字母。（例如`ea01_01l`）<br>
 原图举例：[Origin](https://file.sxjeru.top/%E5%9B%BE%E5%BA%8A/ea01_01l.jpg)<br>
-差分图举例：[Diff](https://file.sxjeru.top/%E5%9B%BE%E5%BA%8A/ea01_02l.jpg)
+差分图举例：[Diff](https://file.sxjeru.top/%E5%9B%BE%E5%BA%8A/ea01_02l.jpg)<br>
+csv文件举例：![csv](https://file.sxjeru.top/%E5%9B%BE%E5%BA%8A/csv-simple.png)<br>
 - csv文件名字数 <= 9 (包含后缀名)；
 - csv总数 <= 1000；
-- 每张CG所包含的差分数 <= 100；
+- 每张CG所包含的差分数 <= 100。
 # 用法
-
+1. 前往 [Release](https://github.com/sxjeru/CG-csv-Merge/releases) 下载编译好的文件；
+2. 解压后将待处理的 jpg 与 csv 文件粘贴到“event”文件夹中；
+3. 双击“cg_csv_merge.exe”，开始合并；
+4. 等待合并完成后，读取处理报告，并前往“result”文件夹获得成品CG；
+5. ~~得到了好多涩图，好耶！！！~~
 # 编译
 （应该没人会看上咱的辣鸡代码吧……）
 
