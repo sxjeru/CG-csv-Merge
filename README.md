@@ -5,7 +5,9 @@ Merge some Galgame CG images, which often include a large original picture and s
 # 适用范围
 由于本程序是以合并『俺の恋天使がポンコツすぎてコワ～い。』的CG为目的开发，因此适用范围有限，需满足以下条件：
 
-- 源文件包含一张原图与至少一张差分图（图片均为jpg格式），还有一个csv文件。
+- Windows 7+ x64；
+- Microsoft Visual C++ 2015-2019 Redistributable 运行库（[点此下载](https://aka.ms/vs/16/release/vc_redist.x64.exe)）；
+- 源文件包含一张原图与至少一张差分图（图片均为jpg格式），还有一个csv文件；
 - 所有文件名均以字母“l”结尾，且均为小写字母。（例如`ea01_01l`）<br>
 原图举例：[Origin](https://file.sxjeru.top/%E5%9B%BE%E5%BA%8A/ea01_01l.jpg)<br>
 差分图举例：[Diff](https://file.sxjeru.top/%E5%9B%BE%E5%BA%8A/ea01_02l.jpg)<br>
@@ -23,7 +25,7 @@ csv文件举例：![csv](https://file.sxjeru.top/%E5%9B%BE%E5%BA%8A/csv-simple.p
 （应该没人会看上咱的辣鸡代码吧……）
 
 开发环境：
-- VS 2019
+- VS 2019 x64
 - OpenCV 4.5.4
 
 其余条件参考上方“适用范围”。
