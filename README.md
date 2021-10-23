@@ -8,10 +8,24 @@ Merge some Galgame CG images, which often include a large original picture and s
 - Windows 7+ x64；
 - Microsoft Visual C++ 2015-2019 Redistributable 运行库（[点此下载](https://aka.ms/vs/16/release/vc_redist.x64.exe)）；
 - 源文件包含一张原图与至少一张差分图（图片均为jpg格式），还有一个csv文件；
-- 所有文件名均以字母“l”结尾，且均为小写字母。（例如`ea01_01l`）<br>
-原图举例：[Origin](https://file.sxjeru.top/%E5%9B%BE%E5%BA%8A/ea01_01l.jpg)<br>
-差分图举例：[Diff](https://file.sxjeru.top/%E5%9B%BE%E5%BA%8A/ea01_02l.jpg)<br>
-csv文件举例：![csv](https://file.sxjeru.top/%E5%9B%BE%E5%BA%8A/csv-simple.png)<br>
+- 所有文件名均以字母“l”结尾，且均为小写字母。（例如`ea01_01l`）
+<details>
+  <summary>原图举例</summary>
+  <img src="https://file.sxjeru.top/%E5%9B%BE%E5%BA%8A/ea01_01l.jpg" alt="Origin">
+</details> 
+<details>
+  <summary>差分图举例</summary>
+  <img src="https://file.sxjeru.top/%E5%9B%BE%E5%BA%8A/ea01_02l.jpg" alt="Diff">
+</details> 
+<details>
+  <summary>csv文件举例</summary>
+  <img src="https://file.sxjeru.top/%E5%9B%BE%E5%BA%8A/csv-simple.png" alt="csv">
+</details> 
+<details>
+  <summary>成品举例</summary>
+  <img src="https://file.sxjeru.top/%E5%9B%BE%E5%BA%8A/ea01_02l-ok.jpg" alt="OK">
+</details> 
+
 - csv文件名字数 <= 9 (包含后缀名)；
 - csv总数 <= 1000；
 - 每张CG所包含的差分数 <= 100。
