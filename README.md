@@ -35,6 +35,12 @@ Merge some Galgame CG images, which often include a large original picture and s
 3. 双击“cg_csv_merge.exe”，开始合并；
 4. 等待合并完成后，读取处理报告，并前往“result”文件夹获得成品CG；
 5. ~~得到了好多涩图，好耶！！！~~
+# To Do
+- [ ] 支持tlg格式
+- [ ] GUI
+- [ ] 支持修改输出图片格式
+- [ ] 支持修改输出图片质量
+- [ ] 通用化（使之不受文件名约束）
 # 编译
 （应该没人会看上咱的辣鸡代码吧……）
 
