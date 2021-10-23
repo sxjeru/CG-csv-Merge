@@ -14,24 +14,28 @@ int main(void) {
 	//int width{ GetSystemMetrics(SM_CXSCREEN) };
 	//int height{ GetSystemMetrics(SM_CYSCREEN) };
 	//cout << width << "	" << height << endl;
+
+	system("mkdir result");
 	//获取csv文件数量 (外循环用)
 	int csvNum = 0, c;
 	int sum1=0, sum2=0;	//统计处理图片数
-	system("dir event\\*l.csv /b > filelist.txt");
+	system("dir event\\*l.csv /b > filelist.txt");	//只对 *l.* 文件作处理
 	FILE* filelist = fopen("filelist.txt", "r");
 	do {
 		c = fgetc(filelist);
 		if (c == '\n')		csvNum++;
 	} while (c != EOF);
+
 	//将csv文件名存入数组csvName
 	rewind(filelist);
-	char csvName[200][100] = { {0} };
+	char csvName[2001][100] = { {0} };	//csv总数 <= 1000
 	for (int i = 1; i <= csvNum * 2; i++) {
-		fgets(csvName[i], 10, filelist);
+		fgets(csvName[i], 10, filelist);		//csv文件名字数 <= 9 (包含后缀名)
 	}
+
 	//读取csv文件，存入数组para
 	//并得到差分数量 (内循环用)
-	string para[300];
+	string para[1010];	//每张CG包含的差分数 <= 100
 	string line;
 	for (int i = 0; i < csvNum; i++) {	//外循环 (以csv文件为单位)
 		int diffNum = 0;
@@ -63,7 +67,8 @@ int main(void) {
 			string imgOpath, imgDpath;		//原始图片 Origin 与差分图片 Diff 路径
 			imgOpath = "event\\" + para[j * 10 + 1] + ".jpg";
 			imgDpath = "event\\" + para[j * 10] + ".jpg";
-			//合并差分CG (merge)
+
+			//合并差分CG (merge)，并保存
 			vector <int> compression_params;
 			compression_params.push_back(IMWRITE_JPEG_QUALITY);
 			compression_params.push_back(95);	//输出jpg质量
@@ -93,8 +98,10 @@ int main(void) {
 	}
 	fclose(filelist);
 	system("del filelist.txt");
-	cout << "本次成功合并" << sum1 << "张差分图，并保留了" << sum2 << "张原图。" << endl;
-	cout << "共计获得CG " << sum1 + sum2 << "张，请便~~"<<endl;
+	cout << "\n本次成功合并 " << sum1 << " 张差分图，并保留了 " << sum2 << " 张原图。" << endl;
+	cout << "共计获得 " << sum1 + sum2 << " 张 CG，好耶~~\n"<<endl;
+	waitKey(1000);
+	destroyWindow("Viewer");
 	system("pause");
 	return 0;
 }
