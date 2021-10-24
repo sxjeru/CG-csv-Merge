@@ -32,8 +32,8 @@ Merge some Galgame CG images, which often include a large original picture and s
 - 每张人物立绘所包含的差分数 <= 1000。
 # 用法
 1. 前往 [Release](https://github.com/sxjeru/CG-csv-Merge/releases) 下载编译好的文件；
-2. 解压后将待处理的文件粘贴到“event”文件夹中；
-3. 双击“cg_csv_merge.exe”，开始合并；
+2. 解压后将待处理的文件粘贴到“event”（CG）或“char”（人物立绘）文件夹中；
+3. 双击“cg_csv_merge.exe”，根据选项操作，开始合并；
 4. 等待合并完成后，读取处理报告，并前往“result”文件夹获取成品图片；
 5. ~~得到了好多涩图，好耶！！！~~
 # To Do
