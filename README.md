@@ -7,7 +7,7 @@ Merge some Galgame CG images, which often include a large original picture and s
 
 - Windows 7+ x64；
 - Microsoft Visual C++ 2015-2019 Redistributable 运行库（[点此下载](https://aka.ms/vs/16/release/vc_redist.x64.exe)）；
-- 源文件包含一张原图与至少一张差分图（图片均为jpg格式），还有一个csv文件；
+- 源文件包含一张原图与至少一张差分图，还有一个csv文件；
 - 所有文件名均以字母“l”结尾，且均为小写字母。（例如`ea01_01l`）
 <details>
   <summary>原图举例</summary>
@@ -28,12 +28,13 @@ Merge some Galgame CG images, which often include a large original picture and s
 
 - csv文件名字数 <= 9 (包含后缀名)；
 - csv总数 <= 1000；
-- 每张CG所包含的差分数 <= 100。
+- 每张CG所包含的差分数 <= 100；
+- 每张人物立绘所包含的差分数 <= 1000。
 # 用法
 1. 前往 [Release](https://github.com/sxjeru/CG-csv-Merge/releases) 下载编译好的文件；
-2. 解压后将待处理的 jpg 与 csv 文件粘贴到“event”文件夹中；
+2. 解压后将待处理的文件粘贴到“event”文件夹中；
 3. 双击“cg_csv_merge.exe”，开始合并；
-4. 等待合并完成后，读取处理报告，并前往“result”文件夹获得成品CG；
+4. 等待合并完成后，读取处理报告，并前往“result”文件夹获取成品图片；
 5. ~~得到了好多涩图，好耶！！！~~
 # To Do
 - [ ] GUI
