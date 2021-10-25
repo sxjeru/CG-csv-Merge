@@ -37,6 +37,9 @@ Merge some Galgame CG images, which often include a large original picture and s
 4. 等待合并完成后，读取处理报告，并前往“result”文件夹获取成品图片；
 5. ~~得到了好多涩图，好耶！！！~~
 # To Do
+- [ ] 预览窗口支持透明图片
+- [ ] 预览窗口自动调节尺寸
+- [ ] 预览窗口按图片比例缩放
 - [ ] GUI
 - [ ] 支持修改输出图片格式
 - [ ] 支持修改输出图片质量
