@@ -1,0 +1,8 @@
+在运行之前，请确认已完成以下步骤：
+
+1. 从 patch.xp3 得到形同“ce_yl.csv”“ce01a007l.png”的文件，并放入 char 文件夹；
+   （通过 GARbro 等软件可将 tlg 文件转成 png 文件）
+
+2. 得到形同“ea09l.csv”“ea09_01l.jpg”的文件，并放入 event 文件夹。
+
+确认无误后，
