@@ -38,11 +38,11 @@ Merge some Galgame CG images, which often include a large original picture and s
 5. ~~得到了好多涩图，好耶！！！~~
 # To Do
 - [ ] 支持修改输出图片质量
+- [ ] 支持修改输出图片格式
 - [ ] 预览窗口自动调节尺寸（目前是半自动，无法根据屏幕分辨率调节尺寸）
 - [x] 预览窗口按图片比例缩放
 - [ ] GUI
 - [ ] 预览窗口支持透明图片（OpenCV原生不支持，只有用其他GUI库了）
-- [ ] 支持修改输出图片格式
 - [ ] 通用化（使之不受文件名约束）
 - [x] ~~支持tlg格式~~（GARbro自带，另外咱想到的实现的方法居然是用system去执行“tlg2png.exe”……）
 # 编译
