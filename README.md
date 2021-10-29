@@ -33,12 +33,14 @@ Merge some Galgame CG images, which often include a large original picture and s
 # 用法
 1. 前往 [Release](https://github.com/sxjeru/CG-csv-Merge/releases) 下载编译好的文件；
 2. 解压后将待处理的文件粘贴到“event”（CG）或“char”（人物立绘）文件夹中；
-3. 双击“cg_csv_merge.exe”，根据选项操作，开始合并；
-4. 等待合并完成后，读取处理报告，并前往“result”文件夹获取成品图片；
-5. ~~得到了好多涩图，好耶！！！~~
+3. 前往“config/config.json”查看或修改配置文件；
+4. 双击“cg_csv_merge.exe”，根据选项操作，开始合并；
+5. 等待合并完成后，读取处理报告，并前往“result”文件夹获取成品图片；
+6. ~~得到了好多涩图，好耶！！！~~
 # To Do
-- [ ] 支持修改输出图片质量
+- [x] 支持修改输出图片质量
 - [ ] 支持修改输出图片格式
+- [ ] 支持手动修改预览窗口尺寸
 - [ ] 预览窗口自动调节尺寸（目前是半自动，无法根据屏幕分辨率调节尺寸）
 - [x] 预览窗口按图片比例缩放
 - [ ] GUI
@@ -51,6 +53,7 @@ Merge some Galgame CG images, which often include a large original picture and s
 开发环境：
 - VS 2019 x64
 - OpenCV 4.5.4
+- JsonCpp 1.9.4
 
 其余条件参考上方“适用范围”。
 <br><br>
