@@ -7,14 +7,30 @@
 #include <imgcodecs.hpp>
 #include <core.hpp>
 #include <highgui.hpp>
+#include "config.h"
 using namespace std;
 using namespace cv;
+using namespace Json;
 void merge1() {
 	//获取屏幕分辨率 (用于自动调整预览窗口尺寸)
 	//int width{ GetSystemMetrics(SM_CXSCREEN) };
 	//int height{ GetSystemMetrics(SM_CYSCREEN) };
 	//cout << width << "	" << height << endl;
 
+	//读取配置文件
+	int quality;
+	Value root;
+	ifstream json("config\\config.json", ios::binary);
+	Reader reader;
+	if (reader.parse(json, root))
+	{
+		quality = root["qualityJPGfile"].asInt();
+	}
+	else {
+		cout << "配置文件解析错误，请检查文件是否丢失，或存在语法错误！" << endl;
+	}
+
+	bool empty = false;
 	//获取csv文件数量 (外循环用)
 	int csvNum = 0, c;
 	int sum1 = 0, sum2 = 0;	//统计处理图片数
@@ -70,11 +86,14 @@ void merge1() {
 			//合并差分CG (merge)，并保存
 			vector <int> compression_params;
 			compression_params.push_back(IMWRITE_JPEG_QUALITY);
-			compression_params.push_back(95);	//输出jpg质量
+			compression_params.push_back(quality);	//输出jpg质量
 			if (para[j * 10 + 2] != "") {
 				Mat imgO = imread(imgOpath);
 				Mat imgD = imread(imgDpath);
-				if (!imgO.data || !imgD.data)		goto jump;		//判断图片是否存在
+				if (!imgO.data || !imgD.data) {
+					goto jump;		//判断图片是否存在
+					empty = true;
+				}
 				int x = stoi(para[j * 10 + 3]), y = stoi(para[j * 10 + 4]), w = stoi(para[j * 10 + 5]), h = stoi(para[j * 10 + 6]);	//string -> int
 				Mat roi(imgO(Rect(x, y, w, h)));
 				imgD.copyTo(roi);
@@ -87,7 +106,10 @@ void merge1() {
 			}
 			else {
 				Mat imgO = imread(imgOpath);
-				if (!imgO.data)		goto jump;//判断图片是否存在
+				if (!imgO.data) {
+					goto jump;		//判断图片是否存在
+					empty = true;
+				}
 				namedWindow("Viewer", WINDOW_NORMAL);
 				resizeWindow("Viewer", 1200, 675);
 				imwrite("result\\" + para[j * 10 + 1] + ".jpg", imgO, compression_params);
@@ -100,6 +122,9 @@ void merge1() {
 	}
 	fclose(filelist);
 	system("del filelist.txt");
+	if (empty) {
+		cout << "警告：有部分图片无法读取，请手动检查！" << endl;
+	}
 	cout << "\n本次成功合并 " << sum1 << " 张差分图，并保留了 " << sum2 << " 张原图。" << endl;
 	cout << "共计获得 " << sum1 + sum2 << " 张 CG，好耶~~\n" << endl;
 	waitKey(1000);

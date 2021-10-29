@@ -8,13 +8,29 @@
 #include <core.hpp>
 #include <highgui.hpp>
 #include <imgproc.hpp>
+#include "config.h"
 using namespace std;
 using namespace cv;
+using namespace Json;
 void merge2() {
 	//获取屏幕分辨率 (用于自动调整预览窗口尺寸)
 	//int width{ GetSystemMetrics(SM_CXSCREEN) };
 	//int height{ GetSystemMetrics(SM_CYSCREEN) };
 	//cout << width << "	" << height << endl;
+
+	//读取配置文件
+	int quality;
+	Value root;
+	ifstream json("config\\config.json", ios::binary);
+	Reader reader;
+	if (reader.parse(json, root))
+	{
+		quality = root["qualityPNGfile"].asInt();
+	}
+	else {
+		cout << "配置文件解析错误，请检查文件是否丢失，或存在语法错误！" << endl;
+	}
+
 	bool empty = false;
 	//获取csv文件数量 (外循环用)
 	int csvNum = 0, c;
@@ -63,7 +79,7 @@ void merge2() {
 			//合并差分CG (merge)，并保存
 			vector <int> compression_params;
 			compression_params.push_back(IMWRITE_PNG_COMPRESSION);
-			compression_params.push_back(3);	//输出png压缩程度
+			compression_params.push_back(quality);	//输出png压缩程度
 			if (para[j * 10 + 2] != "") {
 				Mat imgO = imread(imgOpath, IMREAD_UNCHANGED);	//读取透明png
 				Mat imgD = imread(imgDpath, IMREAD_UNCHANGED);
@@ -78,7 +94,8 @@ void merge2() {
 				Mat roi(imgO(Rect(x, y, w, h)));
 				imgD.copyTo(roi);
 				namedWindow("Viewer", WINDOW_NORMAL);
-				resizeWindow("Viewer", 300, 750);
+				moveWindow("Viewer", 1, 1);
+				resizeWindow("Viewer", imgO.cols / 5.5, imgO.rows / 5.5);
 				imwrite("result\\" + para[j * 10] + ".png", imgO, compression_params);
 				imshow("Viewer", imgO);
 				waitKey(1);
@@ -91,8 +108,9 @@ void merge2() {
 					empty = true;
 				}
  				namedWindow("Viewer", WINDOW_NORMAL);
-				resizeWindow("Viewer", 300, 750);
+				resizeWindow("Viewer", imgO.cols / 5.5, imgO.rows / 5.5);
  				imwrite("result\\" + para[j * 10 + 1] + ".png", imgO, compression_params);
+				cvtColor(imgO, imgO, COLOR_BGRA2BGR);
 				imshow("Viewer", imgO);
 				waitKey(1);
 				sum2++;
@@ -102,6 +120,9 @@ void merge2() {
 	}
 	fclose(filelist);
 	system("del filelist.txt");
+	if (empty) {
+		cout << "警告：有部分图片无法读取，请手动检查！" << endl;
+	}
 	cout << "\n本次成功合并 " << sum1 << " 张差分图，并保留了 " << sum2 << " 张原图。" << endl;
 	cout << "共计获得 " << sum1 + sum2 << " 张人物立绘，好耶~~\n" << endl;
 	waitKey(1000);
