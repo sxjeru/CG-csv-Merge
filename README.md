@@ -38,7 +38,7 @@ Merge some Galgame CG images, which often include a large original picture and s
 5. 等待合并完成后，读取处理报告，并前往“result”文件夹获取成品图片；
 6. ~~得到了好多涩图，好耶！！！~~
 # To Do
-- [ ] 预览窗口支持透明图片（见此issue #3 ~~OpenCV原生不支持，只有用其他GUI库了~~  谁说的，明明是自己笨——）
+- [ ] 预览窗口支持透明图片（[见此issue](https://github.com/sxjeru/CG-csv-Merge/issues/3) ~~OpenCV原生不支持，只有用其他GUI库了~~  谁说的，明明是自己笨——）
 - [x] 支持修改输出图片质量
 - [ ] 支持修改输出图片格式
 - [ ] 支持手动修改预览窗口尺寸
