@@ -125,6 +125,11 @@ void merge1() {
 	if (empty) {
 		cout << "警告：有部分图片无法读取，请手动检查！" << endl;
 	}
+	if (sum1 == 0 && sum2 == 0) {
+		cout << "\n呐呐，客人您忘记放图片了哦~\n" << endl;
+		system("pause");
+		exit(0);
+	}
 	cout << "\n本次成功合并 " << sum1 << " 张差分图，并保留了 " << sum2 << " 张原图。" << endl;
 	cout << "共计获得 " << sum1 + sum2 << " 张 CG，好耶~~\n" << endl;
 	waitKey(1000);

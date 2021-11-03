@@ -12,6 +12,23 @@
 using namespace std;
 using namespace cv;
 using namespace Json;
+//背景(bg)覆盖透明像素
+void imageOverlay(const Mat& pic, Mat& bg, int x, int y) {
+	int channelNum = 3;
+	int alpha = 0;
+	for (int i = 0; i < pic.rows; i++) {
+		for (int j = 0; j < pic.cols * 3; j += 3) {
+			alpha = pic.ptr<uchar>(i)[j / 3 * 4 + 3];
+			if (alpha != 0) {
+				for (int k = 0; k < 3; k++) {
+					if ((i + y < bg.rows) && (i + y >= 0) && ((j + x * 3) / 3 * 3 + k < bg.cols * 3) && ((j + x * 3) / 3 * 3 + k >= 0) && (i / channelNum * 4 + k < bg.cols * 4) && (j / channelNum * 4 + k >= 0)) {
+						bg.ptr<uchar>(i + y)[(j + x * channelNum) / channelNum * channelNum + k] = pic.ptr<uchar>(i)[(j) / channelNum * 4 + k];
+					}
+				}
+			}
+		}
+	}
+}
 void merge2() {
 	//获取屏幕分辨率 (用于自动调整预览窗口尺寸)
 	//int width{ GetSystemMetrics(SM_CXSCREEN) };
@@ -97,7 +114,9 @@ void merge2() {
 				moveWindow("Viewer", 1, 1);
 				resizeWindow("Viewer", imgO.cols / 5.5, imgO.rows / 5.5);
 				imwrite("result\\" + para[j * 10] + ".png", imgO, compression_params);
-				imshow("Viewer", imgO);
+				Mat bg(imgO.rows, imgO.cols, CV_8UC3, Scalar(255, 255, 255));
+				imageOverlay(imgO, bg, 0, 0);	//调用“覆盖透明像素”函数
+				imshow("Viewer", bg);
 				waitKey(1);
 				sum1++;
 			}
@@ -107,14 +126,15 @@ void merge2() {
 					goto jump;		//判断图片是否存在
 					empty = true;
 				}
- 				namedWindow("Viewer", WINDOW_NORMAL);
+				namedWindow("Viewer", WINDOW_NORMAL);
 				resizeWindow("Viewer", imgO.cols / 5.5, imgO.rows / 5.5);
- 				imwrite("result\\" + para[j * 10 + 1] + ".png", imgO, compression_params);
-				cvtColor(imgO, imgO, COLOR_BGRA2BGR);
-				imshow("Viewer", imgO);
+				imwrite("result\\" + para[j * 10 + 1] + ".png", imgO, compression_params);
+				Mat bg(imgO.rows, imgO.cols, CV_8UC3, Scalar(255, 255, 255));
+				imageOverlay(imgO, bg, 0, 0);	//调用“覆盖透明像素”函数
+				imshow("Viewer", bg);
 				waitKey(1);
 				sum2++;
-			}
+			};
 		jump: ;
 		}
 	}
@@ -122,6 +142,11 @@ void merge2() {
 	system("del filelist.txt");
 	if (empty) {
 		cout << "警告：有部分图片无法读取，请手动检查！" << endl;
+	}
+	if (sum1 == 0 && sum2 == 0) {
+		cout << "\n呐呐，客人您忘记放图片了哦~\n" << endl;
+		system("pause");
+		exit(0);
 	}
 	cout << "\n本次成功合并 " << sum1 << " 张差分图，并保留了 " << sum2 << " 张原图。" << endl;
 	cout << "共计获得 " << sum1 + sum2 << " 张人物立绘，好耶~~\n" << endl;
