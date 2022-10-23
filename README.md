@@ -90,6 +90,4 @@ Merge some Galgame CG images, which often include a large original picture and s
 ---
 当然，也感谢『俺の恋天使がポンコツすぎてコワ～い。』这部优秀的作品，让咱能产生这样的想法。
 
-如果你对这部作品感兴趣，可以前往咱的[博客](https://wp.me/p9GKBL-8O)看看，有惊喜哦~
-
-（若上方的博客无法访问，请前往[备用站点](https://blog.sxjeru.top/post/6/)）
+如果你对这部作品感兴趣，可以前往咱的[博客](https://blog.sxjeru.top/post/6/)看看，有惊喜哦~
