@@ -101,8 +101,8 @@ void merge2() {
 				Mat imgO = imread(imgOpath, IMREAD_UNCHANGED);	//¶ÁÈ¡Í¸Ã÷png
 				Mat imgD = imread(imgDpath, IMREAD_UNCHANGED);
 				if (!imgO.data || !imgD.data) {
-					goto jump;		//ÅÐ¶ÏÍ¼Æ¬ÊÇ·ñ´æÔÚ
 					empty = true;
+					goto jump;		//ÅÐ¶ÏÍ¼Æ¬ÊÇ·ñ´æÔÚ
 				}
 				if (imgD.channels() != 4) {
 					cvtColor(imgD, imgD, COLOR_BGR2BGRA);	//RGB -> RGBA
@@ -123,8 +123,8 @@ void merge2() {
 			else {
 				Mat imgO = imread(imgOpath, IMREAD_UNCHANGED);
 				if (!imgO.data) {
-					goto jump;		//ÅÐ¶ÏÍ¼Æ¬ÊÇ·ñ´æÔÚ
 					empty = true;
+					goto jump;		//ÅÐ¶ÏÍ¼Æ¬ÊÇ·ñ´æÔÚ
 				}
 				namedWindow("Viewer", WINDOW_NORMAL);
 				resizeWindow("Viewer", imgO.cols / 5.5, imgO.rows / 5.5);

@@ -91,8 +91,8 @@ void merge1() {
 				Mat imgO = imread(imgOpath);
 				Mat imgD = imread(imgDpath);
 				if (!imgO.data || !imgD.data) {
-					goto jump;		//ÅÐ¶ÏÍ¼Æ¬ÊÇ·ñ´æÔÚ
 					empty = true;
+					goto jump;		//ÅÐ¶ÏÍ¼Æ¬ÊÇ·ñ´æÔÚ
 				}
 				int x = stoi(para[j * 10 + 3]), y = stoi(para[j * 10 + 4]), w = stoi(para[j * 10 + 5]), h = stoi(para[j * 10 + 6]);	//string -> int
 				Mat roi(imgO(Rect(x, y, w, h)));
@@ -107,8 +107,8 @@ void merge1() {
 			else {
 				Mat imgO = imread(imgOpath);
 				if (!imgO.data) {
-					goto jump;		//ÅÐ¶ÏÍ¼Æ¬ÊÇ·ñ´æÔÚ
 					empty = true;
+					goto jump;		//ÅÐ¶ÏÍ¼Æ¬ÊÇ·ñ´æÔÚ
 				}
 				namedWindow("Viewer", WINDOW_NORMAL);
 				resizeWindow("Viewer", 1200, 675);
